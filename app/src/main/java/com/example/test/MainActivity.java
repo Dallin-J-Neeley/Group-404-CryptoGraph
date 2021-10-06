@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 //has the textview stuff
+//testing new changes
 
 public class MainActivity extends AppCompatActivity {
 
