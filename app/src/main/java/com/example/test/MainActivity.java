@@ -19,30 +19,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //calls the activity main XML file
 
-        //TODO: test
+        //TODO: test to do list
     }
 
-    public void onButtonClick(View view) {
+    public void encode(View view) {
         //function that reflects the "Android:onClick" code in the button xml info
-        TextView textFirstName = findViewById(R.id.textViewFirstName);
-        TextView textLastName = findViewById(R.id.textViewLastName);
-        TextView textEmail = findViewById(R.id.textViewEmail);
+        TextView output = findViewById(R.id.textOutput);
+
         //create a textview named txtHello, and grab the ID of from the text in the xml file
 
-        EditText editTextFirstName = findViewById(R.id.editTextFirstName);
+        EditText editInput = findViewById(R.id.editTextInput);
+        String name = editInput.getText().toString();
+        output.setText("Code: " + name);
+    }
+
+    public void decode(View view) {
+        //function that reflects the "Android:onClick" code in the button xml info
+        TextView textFirstName = findViewById(R.id.textOutput);
+
+        //create a textview named txtHello, and grab the ID of from the text in the xml file
+
+        EditText editTextFirstName = findViewById(R.id.editTextInput);
         String name = editTextFirstName.getText().toString();
-        textFirstName.setText(name);
-
-        EditText editTextLastName = findViewById((R.id.editTextLastName));
-        textLastName.setText(editTextLastName.getText().toString());
-
-        EditText editTextEmail = findViewById((R.id.editTextEmail));
-        textEmail.setText("email: " + editTextEmail.getText().toString());
-
-
-
-        //creates an EditText object that is linked to the textbox in the xml.
-
-
+        textFirstName.setText("Code: " + name);
     }
 }

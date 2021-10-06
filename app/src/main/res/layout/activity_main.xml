@@ -6,87 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="86dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLastName" />
-
-    <TextView
-        android:id="@+id/textViewLastName"
-        android:layout_width="80dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textViewEmail"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/textViewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFirstName" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonDecode"
         android:layout_width="135dp"
         android:layout_height="91dp"
-        android:onClick="onButtonClick"
-        android:text="Button"
+        android:onClick="encode"
+        android:text="Decode"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewFirstName"
-        app:layout_constraintStart_toStartOf="@+id/textViewFirstName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEncode"
+        android:layout_width="135dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="4dp"
+        android:onClick="decode"
+        android:text="Encode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDecode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextFirstName"
+        android:id="@+id/editTextInput"
         android:layout_width="216dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="32dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="Code: "
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextLastName"
-        app:layout_constraintEnd_toEndOf="@+id/editTextLastName"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="@+id/editTextLastName" />
-
-    <EditText
-        android:id="@+id/editTextLastName"
-        android:layout_width="223dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmail" />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="214dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="56dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toStartOf="@+id/button" />
+        app:layout_constraintBottom_toTopOf="@+id/textOutput"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDecode"
+        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintStart_toStartOf="@+id/buttonEncode"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.282" />
 
     <TextView
-        android:id="@+id/textViewFirstName"
-        android:layout_width="82dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="50dp"
+        android:id="@+id/textOutput"
+        android:layout_width="223dp"
+        android:layout_height="158dp"
+        android:layout_marginBottom="116dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLastName"
-        app:layout_constraintStart_toStartOf="@+id/textViewLastName"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDecode"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="@+id/buttonEncode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
