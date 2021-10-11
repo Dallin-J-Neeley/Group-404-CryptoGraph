@@ -20,18 +20,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //calls the activity main XML file
+
         //TODO: test to do list
     }
 
     public void encode(View view) {
-        //function that reflects the "Android:onClick" code in the button xml info
         TextView textOutput = findViewById(R.id.textOutput);
-
-        //create a textview named txtHello, and grab the ID of from the text in the xml file
-
+        //creates a "TextView" object named textOutput that calls the ID of the output textbox at the bottom of the XML file
         EditText editInput = findViewById(R.id.editTextInput);
+        //creates an "EditText" object name editInput that uses the ID of the input textbox in the XML File.
         String name = editInput.getText().toString();
+        //this grabs the text written by the user in the editText object and converts it to a string.
         textOutput.setText("Code: " + name);
+        //this sets the textOutput to display the string.
     }
 
     public void decode(View view) {
