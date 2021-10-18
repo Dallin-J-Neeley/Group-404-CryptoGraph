@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -23,27 +25,33 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: test to do list
     }
+    public void translate(View view) {
+        RadioButton input1 = findViewById(R.id.input1);
+        RadioButton output1 = findViewById(R.id.output1);
 
-    public void encode(View view) {
-        TextView textOutput = findViewById(R.id.textOutput);
-        //creates a "TextView" object named textOutput that calls the ID of the output textbox at the bottom of the XML file
         EditText editInput = findViewById(R.id.editTextInput);
-        //creates an "EditText" object name editInput that uses the ID of the input textbox in the XML File.
-        String name = editInput.getText().toString();
-        //this grabs the text written by the user in the editText object and converts it to a string.
-        textOutput.setText("Code: " + name);
-        //this sets the textOutput to display the string.
+        TextView textOutput = findViewById(R.id.textOutput);
+        String input = editInput.getText().toString();
+        String output = "";
+
+        if(input1.isChecked()){
+            //input 1 is english input
+            if(output1.isChecked()) {
+                output = invert(input);
+            }
+        }
+
+        textOutput.setText("Code: " + output);
     }
 
-    public void decode(View view) {
-        TextView textOutput = findViewById(R.id.textOutput);
 
-        EditText editInput = findViewById(R.id.editTextInput);
-        String input = editInput.getText().toString();
+    public String invert(String input){
         String output = "";
         for(int x = input.length() - 1; x >= 0 ; x--){
             output = output + input.charAt(x);
         }
-        textOutput.setText("Code: " + output);
+        return output;
     }
+
 }
+
