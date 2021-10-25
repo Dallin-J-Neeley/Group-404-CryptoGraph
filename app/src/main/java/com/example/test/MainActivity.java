@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         RadioButton input1 = findViewById(R.id.input1);
         RadioButton output1 = findViewById(R.id.output1);
 
+        RadioButton input2 = findViewById(R.id.input2);
+        RadioButton output2 = findViewById(R.id.output2);
+
+        RadioButton input3 = findViewById(R.id.input3);
+        RadioButton output3 = findViewById(R.id.output3);
+
         EditText editInput = findViewById(R.id.editTextInput);
         TextView textOutput = findViewById(R.id.textOutput);
         String input = editInput.getText().toString();
@@ -36,10 +42,32 @@ public class MainActivity extends AppCompatActivity {
 
         if(input1.isChecked()){
             //input 1 is english input
-            {
-                output = "Box# 1 is checked ";
-            }
+            output = "input box 1 is checked: ";
         }
+
+        if(input2.isChecked()){
+            //input 1 is english input
+            output = "input box 2 is checked: ";
+        }
+
+        if(input3.isChecked()){
+            //input 1 is english input
+            output = "input box 3 is checked: ";
+        }
+
+        if(output1.isChecked()){
+            //output1 is english output
+            output = output + "output box 1";
+        }
+        if(output2.isChecked()){
+            //output1 is english output
+            output = output + "output box 2";
+        }
+        if(output3.isChecked()){
+            //output1 is english output
+            output = output + "output box 3";
+        }
+
         textOutput.setText("Code: " + output);
     }
 
