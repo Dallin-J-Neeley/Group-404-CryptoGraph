@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 output = "Box# 1 is checked ";
             }
         }
-
         textOutput.setText("Code: " + output);
     }
 
