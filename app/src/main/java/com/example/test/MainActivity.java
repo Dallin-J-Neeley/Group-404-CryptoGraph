@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(input1.isChecked()){
             //input 1 is english input
-            if(output1.isChecked()) {
-                output = invert(input);
+            {
+                output = "Box# 1 is checked ";
             }
         }
 
