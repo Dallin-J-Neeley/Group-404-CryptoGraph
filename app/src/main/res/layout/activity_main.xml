@@ -19,31 +19,31 @@
             android:id="@+id/output1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="English" />
 
         <RadioButton
             android:id="@+id/output2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Morse" />
 
         <RadioButton
             android:id="@+id/output3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Binary" />
 
         <RadioButton
             android:id="@+id/output4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Hex" />
 
         <RadioButton
             android:id="@+id/output5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="ToBlue" />
     </RadioGroup>
 
     <Button
@@ -94,7 +94,7 @@
             android:id="@+id/input1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
+            android:text="English"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="125dp" />
 
@@ -102,7 +102,7 @@
             android:id="@+id/input2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
+            android:text="Morse"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="125dp" />
 
@@ -110,7 +110,7 @@
             android:id="@+id/input3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
+            android:text="Binary"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="125dp" />
 
@@ -118,7 +118,7 @@
             android:id="@+id/input4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
+            android:text="Hex"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="125dp" />
 
@@ -126,7 +126,7 @@
             android:id="@+id/input5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
+            android:text="ToBlue"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="125dp" />
     </RadioGroup>
