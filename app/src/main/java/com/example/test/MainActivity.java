@@ -73,11 +73,9 @@ public class MainActivity extends AppCompatActivity {
         }
 //type in a key toBlue?
 
-        if(output1.isChecked()){
+        if(!output1.isChecked()){
             //output1 is english output
             //do nothing
-        }
-        else {
             input = output;
         }
         if(output2.isChecked()){
