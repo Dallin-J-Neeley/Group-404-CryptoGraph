@@ -338,5 +338,5 @@ public class MainActivity extends AppCompatActivity {
         output = output.toLowerCase();
         return output;
     }
-
+ 
 }
