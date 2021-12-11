@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void translate(View view) {
         MainActivity myObj = new MainActivity();
+        
+        //create the individaul buttons and assign IDs
         RadioButton input1 = findViewById(R.id.input1);
         RadioButton output1 = findViewById(R.id.output1);
 
@@ -56,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
         EditText editInput = findViewById(R.id.editTextInput);
         TextView textOutput = findViewById(R.id.textOutput);
+        
+        //Grab the text typed in by the user
         String input = editInput.getText().toString();
         String output = "";
-
+        
+        //look for any checked boxes and call the appropriate function.
         if(input1.isChecked()){
             //input 1 is english input
             output = input;
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             //input 1 is english input
             output = myObj.BluetoEnglish(input);
         }
-//type in a key toBlue?
+
 
         if(!output1.isChecked()){
             //output1 is english output
@@ -103,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             output = englishtoBlue(input);
         }
 
+        //Assign the output and display
         textOutput.setText("Code: " + output);
         sockets obj = new sockets(this);
         obj.execute(output);
@@ -117,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String morseHashmap (String input, String name) {
+        //Hashmap for the Morsecode 
         HashMap<String, String> morseCode = new HashMap<String, String>();
         morseCode.put("._", "A");
         morseCode.put("_...", "B");
