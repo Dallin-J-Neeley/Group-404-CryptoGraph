@@ -10,8 +10,9 @@
         android:id="@+id/radioGroup"
         android:layout_width="144dp"
         android:layout_height="240dp"
-        app:layout_constraintBottom_toTopOf="@+id/translate"
+        app:layout_constraintBottom_toTopOf="@+id/wifi"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
         app:layout_constraintTop_toBottomOf="@+id/editTextInput">
         android:id="@+id/outputGroup"
 
@@ -51,31 +52,33 @@
         android:id="@+id/translate"
         android:layout_width="135dp"
         android:layout_height="91dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:onClick="translate"
         android:text="Translate"
         app:layout_constraintBottom_toTopOf="@+id/textOutput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wifi" />
 
     <EditText
         android:id="@+id/editTextInput"
         android:layout_width="216dp"
         android:layout_height="61dp"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Code: "
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="144dp"
         android:layout_height="240dp"
-        app:layout_constraintBottom_toTopOf="@+id/translate"
+        app:layout_constraintBottom_toTopOf="@+id/wifi"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextInput">
         android:id="@+id/inputGroup"
@@ -136,7 +139,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
         android:text="ERROR 404"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextInput"
@@ -152,7 +154,21 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/translate" />
+
+    <Button
+        android:id="@+id/wifi"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:onClick="checkInternet"
+        android:text="Connect"
+        app:layout_constraintBottom_toTopOf="@+id/translate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
