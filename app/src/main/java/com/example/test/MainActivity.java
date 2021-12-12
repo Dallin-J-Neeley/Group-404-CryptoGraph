@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String morseHashmap (String input, String name) {
         HashMap<String, String> morseCode = new HashMap<String, String>();
-        morseCode.put("._", "A");
+        morseCode.put("._", "A"); // morse dictionary
         morseCode.put("_...", "B");
         morseCode.put("_._.", "C");
         morseCode.put("_..", "D");
@@ -163,14 +163,14 @@ public class MainActivity extends AppCompatActivity {
         morseCode.put(" ", " ");
         morseCode.put("/n", ".");
         String output = "";
-        if (input == null){
-            for (String i : morseCode.keySet()) {
-                if (Objects.equals(name, morseCode.get(i))) {
-                    output = i;
+        if (input == null){ // english to morse //the key is morse and the value is english
+            for (String i : morseCode.keySet()) { // shuffle through dictionary
+                if (Objects.equals(name, morseCode.get(i))) { // find the key based on value
+                    output = i; // return output
                 }
             }
         }
-        else if (name == null) {
+        else if (name == null) {// morse to english // .get(morseLetter) = value
             output = morseCode.get(input);
         }
         else {
@@ -179,49 +179,50 @@ public class MainActivity extends AppCompatActivity {
         return output;
     }
 
-    public String encodeMorse(String name) {
+    public String encodeMorse(String name) { // Morse to english
         MainActivity myObject = new MainActivity();
         String output = "";
         String getMorse = "";
         String getLetter = "";
-        for(int x = 0, count = 0; x < name.length() ; x++) {
-            if (name.charAt(x) == ' ' || x == name.length() - 1) {
-                if (x == name.length() - 1 && name.charAt(x) != ' '){
-                    getMorse += String.valueOf(name.charAt(x));
+        for(int x = 0, count = 0; x < name.length() ; x++) { //cycle through morse
+            if (name.charAt(x) == ' ' || x == name.length() - 1) { // if letter = " " or is the last character
+                if (x == name.length() - 1 && name.charAt(x) != ' '){ // if is last character and does not equal a space
+                    getMorse += String.valueOf(name.charAt(x)); // then add character to string
+                    // this makes it so that we don't accidentally add white space
                 }
                 /*if (name.charAt(x - 1) == '.') {
                     count = 0;
                 }*/
-                getLetter = myObject.morseHashmap(getMorse, null);
-                if (count != 0){
+                getLetter = myObject.morseHashmap(getMorse, null); // translate getMorse
+                if (count != 0){ // if it isn't the first letter then don't capitalize
                     getLetter = getLetter.toLowerCase();
                 }
-                output += getLetter;
-                getMorse = ""; //please notify me when the media is done playing so I can play the next one //function
-                count += 1;
+                output += getLetter; // set to output
+                getMorse = ""; // empty getMorse variable for next set of dots and underscores // --> random notes // please notify me when the media is done playing so I can play the next one //function
+                count += 1; // control captitalization
             }
             else {
-                getMorse += String.valueOf(name.charAt(x));
+                getMorse += String.valueOf(name.charAt(x)); // continue to add to make a whole letter in morse
             }
         }
         return output;
         //this sets the textOutput to display the string.
     }
 
-    public String decodeMorse(String input) {
+    public String decodeMorse(String input) { //english to morse
         input = input.toUpperCase();
         String output = "";
         for(int x = 0; x < input.length() ; x++){
             MainActivity myObject = new MainActivity();
-            output += myObject.morseHashmap(null, String.valueOf(input.charAt(x)));
-            output += " ";
+            output += myObject.morseHashmap(null, String.valueOf(input.charAt(x))); //translate each letter
+            output += " ";// add spaces between each morseletter
         }
         return output;
     }
 
     public String toBlue(String input, String name){
         HashMap<String, String> alphabet = new HashMap<String, String>();
-        alphabet.put("A", "I");
+        alphabet.put("A", "I"); //same logic as above!!
         alphabet.put("B", "N");
         alphabet.put("C", "T");
         alphabet.put("D", "H");
@@ -251,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
         alphabet.put(" ", " ");
         String output = "";
         if (input == null){
-            name = name.toUpperCase();
+            name = name.toUpperCase(); //set everything to uppercase
             for (String i : alphabet.keySet()) {
                 if (Objects.equals(name, alphabet.get(i))) {
                     output = i;
@@ -259,11 +260,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if (name == null) {
-            input = input.toUpperCase();
+            input = input.toUpperCase(); // set everything to uppercase
             output = alphabet.get(input);
         }
         else {
-            output = "Null";
+            output = "Null"; // error handling
         }
         return output;
         /*for(int x = 0; x < input.length(); x++){
@@ -276,9 +277,8 @@ public class MainActivity extends AppCompatActivity {
         MainActivity myObject = new MainActivity();
         String output = "";
         String getLetter = "";
-        for(int x = 0, count = 0; x < name.length() ; x++) {
-
-                getLetter = myObject.toBlue(String.valueOf(name.charAt(x)), null);
+        for(int x = 0; x < name.length() ; x++) {
+                getLetter = myObject.toBlue(String.valueOf(name.charAt(x)), null); // decode each letter
                 output += getLetter;
         }
         return output;
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
         String output = "";
         MainActivity myObject = new MainActivity();
         for(int x = 0; x < input.length() ; x++){
-            if (Character.isLowerCase(input.charAt(x))) {
+            if (Character.isLowerCase(input.charAt(x))) { // output toBlue code as lowercase if english was lowercased
                 output += myObject.toBlue(null, String.valueOf(input.charAt(x))).toLowerCase(Locale.ROOT);
             }else {
                 output += myObject.toBlue(null, String.valueOf(input.charAt(x)));
@@ -336,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
         // For Loop changes character to character
         for(int i = 0; i < input.length(); i++)
         {
-            output += (alphabet.get(String.valueOf(input.charAt(i)))+ " ");
+            output += (alphabet.get(String.valueOf(input.charAt(i)))+ " "); // translate each letter
         }
         return output;
     }
@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
     {
 
         HashMap<String, String> alphabet = new HashMap<String, String>();
-        alphabet.put("01000001", "A");
+        alphabet.put("01000001", "A"); // binary hashmap
         alphabet.put("01000010", "B");
         alphabet.put("01000011", "C");
         alphabet.put("01000100", "D");
@@ -378,28 +378,28 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < input.length(); i++)
         {
             String stream = "";
-            if(input.charAt(i) == '1' || input.charAt(i) == '0')
+            if(input.charAt(i) == '1' || input.charAt(i) == '0') //error handling
             {
-                for(int x = 0; x < 8; x++)
+                for(int x = 0; x < 8; x++) // only eight numbers!
                 {
-                    stream += input.charAt(i);
-                    i++;
+                    stream += input.charAt(i); // add each number to stream
+                    i++; // increment i
                 }
-                output += alphabet.get(stream);
+                output += alphabet.get(stream); // translate stream
             }
-            else if (input.charAt(i+1) != ' ')
+            else if (input.charAt(i+1) != ' ') // keep proper spacing
             {
                 output += " ";
             }
 
         }
-        output = output.toLowerCase();
+        output = output.toLowerCase(); // output in lowercase
         return output;
     }
 
     public String hexHashmap (String input, String name) {
         HashMap<String, String> hex = new HashMap<String, String>();
-        hex.put("61", "a");
+        hex.put("61", "a"); //same logic as toBlue and Morse
         hex.put("62", "b");
         hex.put("63", "c");
         hex.put("64", "d");
@@ -519,14 +519,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkInternet(View view) throws IOException {
-        this.s = client.sockets();
-        //checkInternet myObj = new checkInternet(this);
-        //myObj.execute();
-        //listenForMessage();
+        this.s = client.sockets(); // connects socket
     }
 
-    private static class receiveMessage extends AsyncTask<String, String, String> {
-        private WeakReference<MainActivity> myObj;
+    private static class receiveMessage extends AsyncTask<String, String, String> { // Async Task runs in the background
+        private WeakReference<MainActivity> myObj; // allows access to objects in MainActivity
 
         receiveMessage(MainActivity obj) {
             myObj = new WeakReference<MainActivity>(obj);
@@ -543,15 +540,15 @@ public class MainActivity extends AppCompatActivity {
 
                 InputStreamReader inputStreamReader = new InputStreamReader(mainObj.client.s.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                while (mainObj.client.s.isConnected()) {
+                while (mainObj.client.s.isConnected()) { //get messages while connected
                     msgFromGroup = bufferedReader.readLine();
-                    publishProgress(msgFromGroup);
+                    publishProgress(msgFromGroup); // send to onProgressUpdate
                     System.out.println(msgFromGroup);
                 }
             } catch (IOException e) {
                 return "Server Failed";
             }
-            return "Server Failed";
+            return "Server Failed"; // tell user server failed returns to onPostExecute
         }
 
         @Override
@@ -561,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
             if (obj == null || obj.isFinishing()) {
                 //return;
             }
-            Toast.makeText(obj, strings[0], Toast.LENGTH_SHORT).show();
+            Toast.makeText(obj, strings[0], Toast.LENGTH_SHORT).show(); // display message from other clients
         }
 
         @Override
@@ -572,7 +569,7 @@ public class MainActivity extends AppCompatActivity {
                 //return;
             }
             if (s.equals("Server connected")) {
-                Toast.makeText(obj, s, Toast.LENGTH_SHORT).show();
+                Toast.makeText(obj, s, Toast.LENGTH_SHORT).show(); // displays error if server fails
             }
         }
     }
