@@ -9,7 +9,7 @@ This is our Android app Cryptograph designed to encrypt, decrypt, or simply conv
 * Open Server.java and ClientHandler.java in VScode. 
 * Run Server.java.
 * Open everything else in Android Studios. 
-* Run two instances of MainActivity on the Pixel 2 API 30.
+* Run two instances of MainActivity one on each Pixel 2 API 30.
 
 ###### Start with phone one
 * Press the connect button, enter your name into the 'Code:' input then select 'English' on the left side and 'English' on the right side. 
