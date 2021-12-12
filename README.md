@@ -17,7 +17,7 @@ This is our Android app Cryptograph designed to encrypt, decrypt, or simply conv
 * Then click 'Translate.' This gives you a username and allows the server to distinguish between clients. If two clients have the same username the server will not send messages between those clients.
 
 ###### Phone two
-* Give phone two a username like you did for phone one.
+* Connect phone two and give it a username like you did for phone one.
 * If you did it right phone one will receive a popup at the bottom that says that phone two has connected to the group. 
 
 ###### You're good to go!
