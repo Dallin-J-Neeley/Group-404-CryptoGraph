@@ -6,7 +6,8 @@ This is our Android app Cryptograph designed to encrypt, decrypt, or simply conv
 
 # Instructions 
 ###### Setup environment
-* Open Server.java and ClientHandler.java in VScode. Run Server.java.
+* Open Server.java and ClientHandler.java in VScode. 
+* Run Server.java.
 * Open everything else in Android Studios. 
 * Run two instances on MainActivity on the Pixel 2 API 30.
 
