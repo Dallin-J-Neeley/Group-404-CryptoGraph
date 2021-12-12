@@ -16,7 +16,7 @@ This is our Android app Cryptograph designed to encrypt, decrypt, or simply conv
 
 ###### Phone two
 * Give phone two a username like you did for phone one.
-* If you did it right phone one will receive a popup at the bottom (the UI keyboard will cover the popup, so put that off the screen) that says that phone two has connected to the group. 
+* If you did it right phone one will receive a popup at the bottom that says that phone two has connected to the group. 
 
 ###### You're good to go!
 * You may now send messages back and forth in whatever language you please. 
