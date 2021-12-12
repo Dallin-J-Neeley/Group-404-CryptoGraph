@@ -11,8 +11,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.ref.WeakReference;
 import java.net.Socket;
@@ -25,7 +27,8 @@ import java.util.Objects;
 //testing sending it back up
 
 public class MainActivity extends AppCompatActivity {
-
+    Socket s = null;
+    Client client = new Client();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //this is the first code ran on startup
@@ -104,8 +107,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textOutput.setText("Code: " + output);
-        sockets obj = new sockets(this);
-        obj.execute(output);
+        //sockets obj = new sockets(this);
+        //obj.execute(output);
+        client.send(output);
+        receiveMessage msg = new receiveMessage(this);
+        msg.execute();
     }
 
     public String invertText(String input){
@@ -242,8 +248,10 @@ public class MainActivity extends AppCompatActivity {
         alphabet.put("Y", "Y");
         alphabet.put("Z", "Z");
         alphabet.put(" ", "(");
+        alphabet.put(" ", " ");
         String output = "";
         if (input == null){
+            name = name.toUpperCase();
             for (String i : alphabet.keySet()) {
                 if (Objects.equals(name, alphabet.get(i))) {
                     output = i;
@@ -251,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if (name == null) {
+            input = input.toUpperCase();
             output = alphabet.get(input);
         }
         else {
@@ -268,9 +277,7 @@ public class MainActivity extends AppCompatActivity {
         String output = "";
         String getLetter = "";
         for(int x = 0, count = 0; x < name.length() ; x++) {
-                /*if (name.charAt(x - 1) == '.') {
-                    count = 0;
-                }*/
+
                 getLetter = myObject.toBlue(String.valueOf(name.charAt(x)), null);
                 output += getLetter;
         }
@@ -282,7 +289,11 @@ public class MainActivity extends AppCompatActivity {
         String output = "";
         MainActivity myObject = new MainActivity();
         for(int x = 0; x < input.length() ; x++){
-            output += myObject.toBlue(null, String.valueOf(input.charAt(x)));
+            if (Character.isLowerCase(input.charAt(x))) {
+                output += myObject.toBlue(null, String.valueOf(input.charAt(x))).toLowerCase(Locale.ROOT);
+            }else {
+                output += myObject.toBlue(null, String.valueOf(input.charAt(x)));
+            }
         }
         return output;
     }
@@ -507,31 +518,38 @@ public class MainActivity extends AppCompatActivity {
         return output;
     }
 
-    private static class sockets extends AsyncTask<String, String, String> {
+    public void checkInternet(View view) throws IOException {
+        this.s = client.sockets();
+        //checkInternet myObj = new checkInternet(this);
+        //myObj.execute();
+        //listenForMessage();
+    }
+
+    private static class receiveMessage extends AsyncTask<String, String, String> {
         private WeakReference<MainActivity> myObj;
-        sockets (MainActivity obj){
+
+        receiveMessage(MainActivity obj) {
             myObj = new WeakReference<MainActivity>(obj);
         }
 
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Socket s = new Socket("10.0.2.2", 6161);
-                publishProgress(strings[0]);
+                MainActivity mainObj = myObj.get();
+                if (mainObj == null || mainObj.isFinishing()) {
+                    //return;
+                }
+                String msgFromGroup;
 
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(s.getOutputStream());
-                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-
-                bufferedWriter.write(strings[0]); //Send input
-                bufferedWriter.newLine(); //adds a newline
-                bufferedWriter.flush(); //flushes stream
-
-                s.close();
-                //
-                return "Server connected";
+                InputStreamReader inputStreamReader = new InputStreamReader(mainObj.client.s.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                while (mainObj.client.s.isConnected()) {
+                    msgFromGroup = bufferedReader.readLine();
+                    publishProgress(msgFromGroup);
+                    System.out.println(msgFromGroup);
+                }
             } catch (IOException e) {
-                publishProgress("Failed Connected");
-                System.out.println(e);
+                return "Server Failed";
             }
             return "Server Failed";
         }
@@ -540,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onProgressUpdate(String... strings) {
             super.onProgressUpdate(strings);
             MainActivity obj = myObj.get();
-            if (obj == null || obj.isFinishing()){
+            if (obj == null || obj.isFinishing()) {
                 //return;
             }
             Toast.makeText(obj, strings[0], Toast.LENGTH_SHORT).show();
