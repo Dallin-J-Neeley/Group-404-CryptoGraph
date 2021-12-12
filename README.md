@@ -12,7 +12,8 @@ This is our Android app Cryptograph designed to encrypt, decrypt, or simply conv
 * Run two instances of MainActivity one on each Pixel 2 API 30.
 
 ###### Start with phone one
-* Press the connect button, enter your name into the 'Code:' input then select 'English' on the left side and 'English' on the right side. 
+* Press the connect button. In the Server.java terminal you should see 'A new client has connected.' 
+* Enter your name into the 'Code:' input then select 'English' on the left side and 'English' on the right side. 
 * Then click 'Translate.' This gives you a username and allows the server to distinguish between clients. If two clients have the same username the server will not send messages between those clients.
 
 ###### Phone two
